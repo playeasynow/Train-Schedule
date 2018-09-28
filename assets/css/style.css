@@ -37,7 +37,9 @@ html, body {
 }
 
 .website-logo img {
-    width: 100px;
+    width: 130px;
+    margin-left: 55px;
+    margin-top: 30px;
 }
 
 .website-logo a {
@@ -196,7 +198,7 @@ html, body {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-color: #0093FF;
+    background-color: crimson;
     justify-content: center;
     align-items: center;
     z-index: -1;

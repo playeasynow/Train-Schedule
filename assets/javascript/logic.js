@@ -6,8 +6,8 @@ var config = {
     projectId: "train-activity-49b28",
     storageBucket: "train-activity-49b28.appspot.com",
     messagingSenderId: "52372351647"
-};
-firebase.initializeApp(config);
+  };
+  firebase.initializeApp(config);
 
 // Get a reference to the database service
 var database = firebase.database();
@@ -15,7 +15,6 @@ var database = firebase.database();
 var trainNumber = 0;
 
 // On click event associated with the add train information
-// Capture Button Click
 $("#add-train").on("click", function (event) {
     // prevent form from trying to submit/refresh the page
     event.preventDefault();
@@ -50,15 +49,6 @@ $("#add-train").on("click", function (event) {
 
     $("tbody").append(newRow);
 
-
-    // newTrainDetail;
-    // newTrainRow.attr("id", `${trainScheduler.name}`);
-    // newTrainRow.append(newTrainRow.text(trainscheduler.name));
-    // newDestinationRow.append(`${trainScheduler.destination}`);
-    // newTimeRow.append(`${trainScheduler.time}`);
-    // newFrequencyRow.append(`${trainScheduler.frequency}`);
-    // newMinutesAwayRow.append(`${trainScheduler.minutes}`);
-
     database.ref().push(trainScheduler);
 
 });
@@ -66,16 +56,6 @@ $("#add-train").on("click", function (event) {
 // Firebase is always watching for changes to the data.
 // When changes occurs it will print them to console and html
 database.ref().on("value", function (snapshot) {
-
-    // Print the initial data to the console.
-    console.log(snapshot.val());
-
-    // Log the value of the various properties
-    console.log(snapshot.val().name);
-    console.log(snapshot.val().destination);
-    console.log(snapshot.val().time);
-    console.log(snapshot.val().frequency);
-    console.log(snapshot.val().minutes);
 
     // Change the HTML
     $("#name-display").text(snapshot.val().name);
@@ -90,15 +70,6 @@ database.ref().on("value", function (snapshot) {
 database.ref().on("child_added", function (snapshot, prevChildKey) {
 
     var newPost = snapshot.val();
-    // Print the initial data to the console.
-    console.log(snapshot.val());
-
-    // Log the value of the various properties
-    console.log(snapshot.val().name);
-    console.log(snapshot.val().destination);
-    console.log(snapshot.val().time);
-    console.log(snapshot.val().frequency);
-    console.log(snapshot.val().minutes);
 
     // Change the HTML
     $(".name-display" + trainNumber).text(newPost.name);
@@ -111,33 +82,3 @@ database.ref().on("child_added", function (snapshot, prevChildKey) {
 }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
 });
-// Console log each of the user inputs to confirm we are receiving them
-// console.log(trainScheduler.name);
-// console.log(trainScheduler.destination);
-// console.log(trainScheduler.time);
-// console.log(trainScheduler.frequency);
-// console.log(trainScheduler.minutes);
-
-  // Output all of the new information into the relevant HTML sections
-  // $("#name-display").text(trainScheduler.name);
-  // $("#destination-display").text(trainScheduler.destination);
-  // $("#train-time-display").text(trainScheduler.time);
-  // $("#frequency-display").text(trainScheduler.frequency);
-  // $("#minutes-away-display").text(trainScheduler.minutes);
-
-  // Clear sessionStorage
-  // sessionStorage.clear();
-
-  // // Store all content into sessionStorage
-  // sessionStorage.setItem("Train Name", trainScheduler.name);
-  // sessionStorage.setItem("Destination", trainScheduler.destination);
-  // sessionStorage.setItem("Train Time", trainScheduler.time);
-  // sessionStorage.setItem("Frequency", trainScheduler.frequency);
-  // sessionStorage.setItem("Minutes Away", trainScheduler.minutes);
-
-  // By default display the content from sessionStorage
-  // $("#name-display").text(sessionStorage.getItem("Train Name"));
-  // $("#destination-display").text(sessionStorage.getItem("Destination"));
-  // $("#train-time-display").text(sessionStorage.getItem("Train time"));
-  // $("#frequency-display").text(sessionStorage.getItem("Frequency"));
-  // $("#minutes-away-display").text(sessionStorage.getItem("Minutes Away"));
