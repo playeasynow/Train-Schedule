@@ -28,14 +28,14 @@ $(document).ready(function () {
         };
 
         // Capture User Inputs and store them into variables
-        train.name = $("#train-time").val().trim();
+        train.name = $("#train-name").val().trim();
         train.destination = $("#destination").val().trim();
         train.frequency = $("#frequency").val().trim();
         train.firstTrain = $("#time").val().trim();
 
         database.ref().push(train);
 
-        $("#train-time").val("");
+        $("#train-name").val("");
         $("#destination").val("");
         $("#frequency").val("");
         $("#time").val("");
